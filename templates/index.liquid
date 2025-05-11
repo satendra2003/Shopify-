@@ -1,0 +1,9 @@
+{% assign hour = now | date: "%H" | plus: 0 %}
+
+{% if hour < 12 %}
+  <h2>Good Morning, Shopper!</h2>
+{% elsif hour < 18 %}
+  <h2>Good Afternoon, Shopper!</h2>
+{% else %}
+  <h2>Good Evening, Shopper!</h2>
+{% endif %}

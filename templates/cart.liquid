@@ -1,0 +1,26 @@
+{% assign cart_total = cart.total_price | divided_by: 100 %}
+{% assign upsell_product = blank %}
+
+{% if cart_total < 1000 %}
+  {% assign upsell_product = collections['accessories'].products.first %}
+{% else %}
+  {% assign upsell_product = collections['premium'].products.first %}
+{% endif %}
+
+{% if cart_total < 500 %}
+  <p class="free-shipping-msg">Spend ₹{{ 500 | minus: cart_total }} more to get free shipping!</p>
+{% else %}
+  <p class="free-shipping-msg">You’ve unlocked free shipping!</p>
+{% endif %}
+
+
+{% if upsell_product %}
+  <div class="upsell-section">
+    <h3>You might also like:</h3>
+    <div>
+      <a href="{{ upsell_product.url }}">
+        {{ upsell_product.title }} - ₹{{ upsell_product.price | money_without_trailing_zeros }}
+      </a>
+    </div>
+  </div>
+{% endif %}

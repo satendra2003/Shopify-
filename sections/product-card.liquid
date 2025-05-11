@@ -1,0 +1,12 @@
+{% assign product_price = product.price | divided_by: 100 %}
+{% assign stock_quantity = product.variants.first.inventory_quantity %}
+
+<div class="product-badges">
+  {% if product_price < 500 %}
+    <span class="badge budget-pick">Budget Pick</span>
+  {% endif %}
+  
+  {% if stock_quantity < 5 %}
+    <span class="badge limited-stock">Limited Stock</span>
+  {% endif %}
+</div>

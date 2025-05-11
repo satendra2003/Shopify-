@@ -1,0 +1,20 @@
+<form method="get" action="">
+    <label for="tag-filter">Filter by Tag:</label>
+    <select id="tag-filter" name="filter">
+      <option value="">All Products</option>
+      <option value="best-seller" {% if request.params.filter == 'best-seller' %}selected{% endif %}>Best Seller</option>
+      <option value="new-arrival" {% if request.params.filter == 'new-arrival' %}selected{% endif %}>New Arrival</option>
+      <option value="discounted" {% if request.params.filter == 'discounted' %}selected{% endif %}>Discounted</option>
+    </select>
+    <button type="submit">Apply</button>
+  </form>
+  
+  <script>
+    // Example JS: Show an alert when a product is clicked
+    document.querySelectorAll('.product-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        alert('Product clicked: ' + card.querySelector('.card__heading').innerText);
+      });
+    });
+  </script>
+    
